@@ -52,7 +52,7 @@ function createGame(source) {
   vm.createContext(game);
   vm.runInContext(section(source, /newGameButtonClick\s*=\s*function/, /resetCurrentCodeButtonClick\s*=\s*function/), game);
   vm.runInContext(section(source, /gameOnGoing\s*=\s*function/, /function allPossibleCodesFilled/), game);
-  const controls = section(source, /if\s*\(gameWon\s*&&\s*!allPerformancesFilled\(\)\)/, /playRandomCodeButtonObject.disabled/);
+  const controls = section(source, /if\s*\(gameWon\s*&&\s*!allPerformancesFilled\(\)\)\s*\{\s*newGameButtonObject.disabled/, /playRandomCodeButtonObject.disabled/);
   vm.runInContext('function refreshControls() { ' + controls + ' }', game);
   game.refreshControls();
   return game;
