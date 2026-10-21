@@ -1031,7 +1031,7 @@ newGameButtonClick = function(nbColumns_p, skip_transition_effect = false) { // 
   }
   if (!newGameButtonObject.disabled) {
     if ( (nbColumns_p == 0) // ("NEW GAME" button event)
-         || (currentAttemptNumber <= 1) ) { // (radio buttons events)
+         || (currentAttemptNumber <= 1) || !gameOnGoing() ) { // (radio buttons events)
 
       if (gameOnGoing() && (currentAttemptNumber > 1)) { // (condition duplicated)
 
@@ -4457,7 +4457,7 @@ function draw_graphic_bis() {
       settingsButtonObject.disabled = false;
       settingsButtonObject.className  = "button";
 
-      if (currentAttemptNumber > 1) {
+      if (newGameButtonObject.disabled || (gameOnGoing() && (currentAttemptNumber > 1))) {
         for (let i = 0; i < allRadioButtons.length; i++) {
             allRadioButtons[i].className = "radio disabled";
         }

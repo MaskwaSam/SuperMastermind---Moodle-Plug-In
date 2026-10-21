@@ -769,7 +769,7 @@ return;
 }
 if(!newGameButtonObject.disabled){
 if((nbColumns_p==0)
-||(currentAttemptNumber <=1) ){
+||(currentAttemptNumber <=1)||!gameOnGoing() ){
 if(gameOnGoing()&&(currentAttemptNumber > 1)){
 if(nbNewGameEventsCancelled <=2){
 var rsp=confirm("Do you really want to abort current game?");
@@ -3541,7 +3541,7 @@ newGameButtonObject.value=newGameButtonIniName;
 }}
 settingsButtonObject.disabled=false;
 settingsButtonObject.className="button";
-if(currentAttemptNumber > 1){
+if(newGameButtonObject.disabled||(gameOnGoing()&&(currentAttemptNumber > 1))){
 for (let i=0;i < allRadioButtons.length;i++){
 allRadioButtons[i].className="radio disabled";
 }
